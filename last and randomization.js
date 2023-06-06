@@ -28,21 +28,21 @@ console.log(concat([1, 2, 3], [4, 5, 6]));
 // Array: Min to Front
 // Given an array of comparable values, move the lowest element to array’s front, shifting backward any
 // elements previously ahead of it. Do not otherwise change the array’s order. Given [4,2,1,3,5],
-// change it to [1,4,2,3,5] and return it. As always, do this without using built-in functions.
+// change it to [1,4,2,3,5] and return it. As always, do this without using any built-in functions.
 
 function minToFront(arr){
     var min = arr[0];
-    for(var i=0; i<arr.length; i++){
+    for(var i=0; i<arr.length; i++){ //this loop will iterate through the array and capture the lowest value (and its original position).
         if(arr[i]<min){
             min = arr[i];
             index = i;
         }
     }
     var arr1=[];
-    arr1.push(min)
+    arr1.push(min) //push the minimum value into our new array first
     for(var i=0; i<arr.length; i++){
         if(i!=index){
-            arr1.push(arr[i]);
+            arr1.push(arr[i]); //push all remaining values from original array into new one, skipping the min position
         }
     }
     console.log(arr1);
@@ -50,7 +50,8 @@ function minToFront(arr){
 }
 
 minToFront([5,4,1,2,3]);
-//bonus - make this work if you have 2 values that equal the min. 
+
+//same challenge, but ALTER the original array
 
 function minToFront(arr) {
     var min = arr[0];
@@ -85,13 +86,15 @@ console.log(minToFront([2,3,4,1,5,6]));
 
 function shuffle(arr)  {
     for(var i = arr.length-1; i>0; i--) {
-        var j = Math.floor(Math.random() * (i+1));
-        var temp = arr[i];
-        arr[i]=arr[j];
-        arr[j]=temp;
+        var j = Math.floor(Math.random() * (i+1)); //j index becomes a random number between 0 and X (the last position in the array (includes 0 as this is array positions)). as we incriment down, this number at most will be the current position
+        var temp = arr[i]; //log current position value
+        arr[i]=arr[j]; //change current position value to randomly selected position value (j)
+        arr[j]=temp; //randomly selected position value then becomes what the current position was (swap them)
     }
     return arr;
 }
+
+console.log(shuffle([1,2,3,4])); 
 
 console.log(shuffle([1,1,1,1,2,2,2,2,3,3,3,3,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,9,9,9,9,10,10,10,10,11,11,11,12,12,13,14,14,14,14,15,15,15,15,16,17,17]));
 
@@ -100,3 +103,5 @@ console.log(shuffle(["welcome","to","the","jungle","we","got", "fun","and", "gam
 //quick easy way but not totally random:
 array.sort((a,b) => 0.5 - Math.random());
 
+
+console.log([1,2,3,4].sort((a,b) => 0.5 - Math.random()));
