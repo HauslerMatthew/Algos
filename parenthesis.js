@@ -49,7 +49,8 @@ console.log(parensValid("())"));
 // - "([{]})" -> true (for now)
 
 function isAllValid(input) {
-    if(checkPar(input, "(", ")" != true)) {
+    //if(checkPar(input, "(", ")" != true)) { //redundant way to format (if function doesnt = true, then run if)
+    if(!(checkPar(input, "(", ")"))) {
         return false;
     }
     if(!(checkPar(input, "[", "]"))) {
