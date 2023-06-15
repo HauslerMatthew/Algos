@@ -40,6 +40,7 @@ console.log(removeDupl([1,2,1,3,4,2]));
 //as you iterate, it checks every value i.e. indexOf(1) returns 0 and 0===0 so it passes filter
 //indexOf(2) returns 1 and 1===1
 //indexOf(1) returns 0 and 0=/=2 so it doesnt pass filter.  this is how it removes dupes, it only captures index of the first occurence.
+console.log(removeDupl([21,2,1,3,4,2]));
 
 
 function RemoveDu(arr){ //same array challenge
