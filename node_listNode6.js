@@ -49,14 +49,23 @@ class SLL{
             }
         }
     }
+    loopMaker() {
+        let runner = this.head; 
+        while (runner.next != null) {
+            runner = runner.next;
+        }
+        runner.next = this.head;
+    }
 }
 var mySLL = new SLL();
 mySLL.addToFront(15);
 mySLL.addToBack(13);
-mySLL.addToBack(-4);
+mySLL.addToBack(4);
 mySLL.addToBack(98);
 mySLL.addToBack(1400);
-mySLL.addToBack(-67);
-mySLL.addToBack(423);
-mySLL.addToBack(2);
+mySLL.addToBack(15);
 mySLL.printMe();
+console.log(mySLL.hasCycle());
+mySLL.loopMaker();
+console.log(mySLL.hasCycle());
+//mySLL.printMe(); //should you do this now? ;)
