@@ -17,7 +17,7 @@ function bubbleSort(arr) {
     return arr;
 }
 
-console.log(bubbleSort([17, 23, 500, 680, 140, 555, 789, 3000, 1, 12]));
+console.log(bubbleSort([17,23,500,680,140,555,789,3000,1,12,900,56,10330,1337,69,420,500,99,999,85,2,7,850]));
 
 
 const bubbleSortArrow = arr => { //practice with arror syntax
@@ -33,7 +33,7 @@ const bubbleSortArrow = arr => { //practice with arror syntax
     return arr;
 };
 
-console.log(bubbleSortArrow([17, 23, 500, 680, 140, 555, 789, 3000, 1, 12]));
+console.log(bubbleSortArrow([17,23,500,680,140,555,789,3000,1,12,900,56,10330,1337,69,420,500,99,999,85,2,7,850]));
 
 // //-----------------------------selection sort----------------------------------//
 // This method is slightly more efficient than bubble, it still iterates the entire array 
@@ -73,7 +73,7 @@ const selectionSortMin2 = arr => {  //cleaner version of above.
     return arr;
 };
 
-console.log(selectionSortMin2([17, 23, 500, 680, 140, 555, 789, 3000, 1, 12]));
+console.log(selectionSortMin2([17,23,500,680,140,555,789,3000,1,12,900,56,10330,1337,69,420,500,99,999,85,2,7,850]));
 
 // this version works the same as min, but instead finds max value and places it at end of array, then repeats this pattern
 // for the previous values, it's basically just working from the end to start instead of start to end. 
@@ -95,7 +95,7 @@ function selectionSortMax(arr) {
     return arr;
 }
 
-console.log(selectionSortMax([17, 23, 500, 680, 140, 555, 789, 3000, 1, 12]));
+console.log(selectionSortMax([17,23,500,680,140,555,789,3000,1,12,900,56,10330,1337,69,420,500,99,999,85,2,7,850]));
 
 // //-----------------------------combine & merge sort----------------------------//
 
@@ -108,6 +108,7 @@ function combineArrays(arr1, arr2) {
     var result = [];
     var i = 0;
     var j = 0;
+    //check each array and push min into new array, then incriment the index of the array that was pushed. 
     while (i<arr1.length && j<arr2.length){
         if(arr1[i]<arr2[j]){
             result.push(arr1[i]);
@@ -117,6 +118,7 @@ function combineArrays(arr1, arr2) {
             j++
         }
     }
+    //after one array finishes pushing values, the other will have remaining values to push
     while (i<arr1.length){
         result.push(arr1[i])
         i++
@@ -133,19 +135,70 @@ console.log(stuff);
 
 //bonus, change function so it changes the first array with the expected sort. 
 
-//Do this next. 
+var x = [5, 7, 12, 19];
+var y = [2, 4, 5, 13];
 
-function mergeSort(arr){ //merge sort breaks down an array into several arrays with one value, then combines them into a sorted array using the combineArrays method above
+const combineArrs = (arr1, arr2) => {
+    //push arr2 into arr1
+    for (i=0;i<arr2.length;i++){
+        arr1.push(arr2[i]);
+    }
+    //select sort arr1 
+    for (let i=0; i < arr1.length - 1; i++) {
+        for (let j = i + 1; j < arr1.length; j++) {
+            if (arr1[j] < arr1[i]) {
+                let temp = arr1[i];
+                arr1[i] = arr1[j];
+                arr1[j] = temp;
+            }
+        }
+    }
+    return arr1;
+}
+
+stuff1 = combineArrs(x, y); //should output [2,4,5,5,7,12,13,19]
+console.log(stuff1);
+
+
+//merge sort breaks down an array into several arrays with one value, then combines them into a sorted array using the combineArrays method
+
+function combineArrays(arr1, arr2) {
+    var result = [];
+    var i = 0;
+    var j = 0;
+    //check each array and push min into new array, then incriment the index of the array that was pushed. 
+    while (i<arr1.length && j<arr2.length){
+        if(arr1[i]<arr2[j]){
+            result.push(arr1[i]);
+            i++
+        } else {
+            result.push(arr2[j]);
+            j++
+        }
+    }
+    //after one array finishes pushing values, the other will have remaining values to push
+    while (i<arr1.length){
+        result.push(arr1[i])
+        i++
+    }
+    while (j<arr2.length){
+        result.push(arr2[j])
+        j++
+    }
+    return result;
+}
+
+function mergeSort(arr){ 
     if(arr.length <=1){
         return arr;
     }
     let mid=Math.floor(arr.length/2);
-    let left = mergeSort(arr.slice(0,mid));
-    let right = mergeSort(arr.slice(mid));
-    return combineArrays(left, right);
+    let left = mergeSort(arr.slice(0,mid)); //slice grabs the first value (index 0) up to everything before the mid index of the array
+    let right = mergeSort(arr.slice(mid)); //slice keeps the mid point and everything after it
+    return combineArrays(left, right); //calls old combine arrays function with the 2 chunks of arrays (sorts them together)
 }
 
-console.log(mergeSort([2,4,18,1,7,6]));
+console.log(mergeSort([17,23,500,680,140,555,789,3000,1,12,900,56,10330,1337,69,420,500,99,999,85,2,7,850]));
 
 //-----------------------------array partition----------------------------------//
 
@@ -173,7 +226,9 @@ function arrayPartition(arr){
 }
 
 let newArr=[4,3,8,7,5,1];
-// arrayPartition(newArr);
+arrayPartition(newArr);
+
+//alternate wiht recursive helper function within function!! 
 
 function partition(arr){
     function swap(array, a, b){
@@ -193,6 +248,9 @@ function partition(arr){
     console.log("the pivot point in array is index", swapIndex, arr);
     return swapIndex;
 }
+
+let newArr1=[4,3,8,7,5,1];
+partition(newArr1);
 
 //-----------------------------quick sort (using partition)----------------------------------//
 
@@ -241,8 +299,8 @@ function quickSort(items, left, right) {
 }
 
 // // first call to quick sort
-// var sortedArray = quickSort(arr, 0, arr.length - 1);
-// console.log(sortedArray); //prints [2,3,5,6,7,9]
+var sortedArray = quickSort(arr, 0, arr.length - 1);
+console.log(sortedArray); //prints [2,3,5,6,7,9]
 
 
 
@@ -276,4 +334,4 @@ function quickSort(arr, left=0, right=arr.length-1){
     return arr;
 }
 
-console.log(quickSort([17, 23, 500, 680, 140, 555, 789, 3000, 1, 12]));
+console.log(quickSort([17,23,500,680,140,555,789,3000,1,12,900,56,10330,1337,69,420,500,99,999,85,2,7,850]));
