@@ -20,7 +20,6 @@ class BST {
     insert(value) {
         // Creating a node 
         var newNode = new Node(value);
-
         // root is null then node will 
         // be added to the tree and made root. 
         if (this.root === null)
