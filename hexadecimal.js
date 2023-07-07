@@ -7,13 +7,13 @@ const convert2Hex = (num, hexString = '', hexvals = '0123456789ABCDEF') => {
         num = Math.floor(num / 16);
     }
     hexString += 'x0' // hex always start with 0x 
-    return hexString.split('').reverse().join('');
+    return hexString.split('').reverse().join(''); //reverse the order of the string (hexstring is 'C7x0' before the return statement)
 }
 
 console.log(convert2Hex(124)); //0x7C
 console.log(convert2Hex(420));
-// console.log(convert2Hex(2000));
-// console.log(convert2Hex(98));
+console.log(convert2Hex(2000));
+console.log(convert2Hex(98));
 
 
 //given a value of 7C, should return 124.  using the hexvals, convert each bit to its decimal number and multiply by 16^n.  n is equal to its index position reversed. 
@@ -33,11 +33,11 @@ const convert2Dec = hexString => {
     return result
 }
 
-// console.log(convert2Dec('7c')) //invalid
+console.log(convert2Dec('7c')) //invalid
 console.log(convert2Dec('7C')) //124
-// console.log(convert2Dec('C9')) //201
-// console.log(convert2Dec('7D0')) //2000
-// console.log(convert2Dec('62')) //98
+console.log(convert2Dec('1A4')) //420
+console.log(convert2Dec('7D0')) //2000
+console.log(convert2Dec('62')) //98
 
 function hex2dec(str){
     let exponentnum = 0;
@@ -53,4 +53,4 @@ function hex2dec(str){
 
 }
 
-console.log(hex2dec("C9")) //201
+console.log(hex2dec("1A4")) //420
