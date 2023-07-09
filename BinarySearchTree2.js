@@ -12,14 +12,14 @@ class BST{
     getRootNode() { 
         return this.root; 
     } 
-    findMin(){
+    findMin(){ //min values always store to the left, once you find the value whose left value is null you know you're there. 
         var runner = this.root;
         while(runner.left != null){
             runner = runner.left
         }
         return runner
     }
-    findMax(){
+    findMax(){ //inverse of min logic, greater values store to the right. 
         var runner = this.root;
         while(runner.right !=null){
             runner = runner.right
@@ -28,16 +28,19 @@ class BST{
     }
     insert(value){
         let newNode=new Node(value)
+        //first insert will establish the root and store there
         if(this.root==null){
             this.root=newNode
         }
+        //
         else{
             let runner=this.root;
+            //block to determine where new value is placed in the tree. 
             while(runner!=null){
                 if(newNode.value>runner.value){
                     if (runner.right==null){
                         runner.right=newNode
-                        return
+                        return //blank return just ends the function, we have placed the value accordingly in the BST at this point
                     }
                     else{ 
                         runner=runner.right
@@ -52,6 +55,7 @@ class BST{
                         runner=runner.left
                     }
                 }
+                //if a duplicate value was provided, it will not pass any of the if/elseif checks above and not alter the BST.
                 else{
                     console.log("No duplicates")
                     return 0;
