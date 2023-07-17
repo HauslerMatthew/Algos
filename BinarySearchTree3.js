@@ -10,10 +10,12 @@ class BST{
         this.root = null
     }
     insert(value){
-        let newNode=new Node(value)
+        let newNode=new Node(value) //create new node with value from insert
+        //if the root is null, set this insert as root
         if(this.root==null){
             this.root=newNode
         }
+        //if not, use block of code that assigns it as right (greater value) or left (lesser value) depending on exisitng values. 
         else{
             let runner=this.root;
             while(runner!=null){
@@ -67,7 +69,7 @@ class BST{
         //will need to compare each side from the root to find the taller side, then increment 
         return Math.max(leftHeight, rightHeight) + 1;
     }
-    //check if BST is balanced (same length each side from root)
+    //check if BST is balanced (same # of values each side from root)
     isBalanced(root){
         if(root == null){
             return true;
@@ -89,8 +91,10 @@ myBST.insert(44);
 myBST.insert(12);
 
 var root = myBST.getRootNode();
+myBST.printTree (root);
 console.log(myBST.height(root)); //should be 4
-console.log(myBST.isBalanced(root)); //should be true
+console.log(myBST.isBalanced(root)); //should be true 
 
 myBST.insert(50);
+myBST.printTree (root);
 console.log(myBST.isBalanced(root)); //should be false
