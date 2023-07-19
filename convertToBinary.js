@@ -9,6 +9,7 @@ const convertBinary = num => {
         binaryString += bit;
         num = Math.floor(num/2);
     }
+    //remember to reverse the string after values are collected
     return binaryString.split('').reverse().join('');
 }
 
