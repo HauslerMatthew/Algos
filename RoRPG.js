@@ -50,8 +50,8 @@ function ritesResolved(n, iPG = 1, iG = 2, t = 0, fiG = 0, fnPG = 0, riPG = 0, f
 }
 
 
-console.log(ritesResolved(0));
-console.log(ritesResolved(1));
-console.log(ritesResolved(2));
-console.log(ritesResolved(3));
-console.log(ritesResolved(4));
+console.log(ritesResolved(0)); //3 golem creatures are in play
+console.log(ritesResolved(1)); //28 golem creatures are in play
+console.log(ritesResolved(2)); //1153 golem creatures are in play
+console.log(ritesResolved(3)); //1186128 golem creatures are in play
+console.log(ritesResolved(4)); //931172461453 golem creatures are in play
