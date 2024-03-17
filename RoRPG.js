@@ -11,6 +11,7 @@
 // Multiple Precursor Golems ARE NOT REDUNDANT, each triggers as you cast Rite
 // Remember that every Precursor Golem has the exact same trigger based on how its worded, so the Precursor Golem that is TARGETED by the CAST Rite of Replication
 // will never get copies of Rite pointed at it, just the initial cast Rite that makes 5 token copies of it. 
+// i.e. if you control 6 Precursor Golems, then cast Rite, you will get 6 triggers telling you to Copy rite on ALL other golems.
 
 function ritesResolved(n, iPG = 1, iG = 2, t = 0, fiG = 0, fnPG = 0, riPG = 0, fiPG = 0) {
     var RoR = 5 //(multiplier per RoR copy)
