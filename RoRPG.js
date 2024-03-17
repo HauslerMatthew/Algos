@@ -15,9 +15,8 @@
 
 function ritesResolved(n, iPG = 1, iG = 2, t = 0, fiG = 0, fnPG = 0, riPG = 0, fiPG = 0) {
     var RoR = 5 //(multiplier per RoR copy)
-    //var iPG = precursor golems (PG) in play
+    //var iPG = precursor golems (PG) in play // iterations of Rite of Replication (RoR) being copied on all other golems in play (based on precursor golems triggering)
     //var iG = golem tokens (G) in play
-    //var i = ipG; //iterations of Rite of Replication (RoR) being copied on all other golems in play (based on precursor golems triggering)
     //var fiG = the number of G created from ROR copies targeting initial G in play
     //var fnPG = the number of G created from new PG entering the battlefield (PG * 2)
     //var riPG = the number of PG remaining after initial target (iPG - 1)
@@ -28,7 +27,7 @@ function ritesResolved(n, iPG = 1, iG = 2, t = 0, fiG = 0, fnPG = 0, riPG = 0, f
     } else if (n == 0) {
         return (`${iPG + iG} golem creatures are in play`);
     } else if (n > 0) {
-        t = 6
+        t = 6 // the PG targeted by the cast RoR, plus the 5 copies it makes
         if (iPG == 1) {
             iPG = t;
             fiG = iG * RoR;
